@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: #{img_lowercase_name}#
+  annotations:
+     
+    
+spec:
+  rules:
+  - host: #{img_lowercase_name}##{url_subdomain}#
+    http:
+      paths:
+      - backend:
+          serviceName: #{img_lowercase_name}#
+          servicePort: 80
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: #{img_lowercase_name}#-ingress
+  namespace: #{namespace_aks}#
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: internal-nginx
+  tls:
+  - hosts:
+    - #{img_lowercase_name}#.internal.connecturedemo.com
+  rules:
+  - host: #{img_lowercase_name}#.internal.connecturedemo.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: #{img_lowercase_name}#
+            port: 
+              number: 80
+

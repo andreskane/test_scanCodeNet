@@ -1,0 +1,113 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Cars",
+        "version": "1.0"
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ],
+    "paths": {
+        "/{id}": {
+            "delete": {
+                "description": "delete",
+                "operationId": "delete",
+                "summary": "delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            },
+            "get": {
+                "description": "get id",
+                "operationId": "get-id",
+                "summary": "get id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            },
+            "put": {
+                "description": "put id",
+                "operationId": "put-id",
+                "summary": "put id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            },
+            "options": {
+                "operationId": "options-id",
+                "summary": "options id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "description": "get",
+                "operationId": "get",
+                "summary": "get",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            },
+            "post": {
+                "description": "post",
+                "operationId": "post",
+                "summary": "post",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        }
+    },
+    "tags": []
+}

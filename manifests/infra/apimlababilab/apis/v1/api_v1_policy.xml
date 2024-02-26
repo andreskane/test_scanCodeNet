@@ -1,0 +1,45 @@
+<policies>
+    <inbound>
+        <base />
+        <cors>
+            <allowed-origins>
+                <origin>https://frontlababilab.azurewebsites.net/</origin>
+            </allowed-origins>
+            <allowed-methods preflight-result-max-age="300">
+                <method>GET</method>
+                <method>DELETE</method>
+                <method>POST</method>
+                <method>PUT</method>
+            </allowed-methods>
+            <allowed-headers>
+                <header>*</header>
+            </allowed-headers>
+        </cors>
+        <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid." require-expiration-time="true" require-scheme="Bearer" require-signed-tokens="true" output-token-variable-name="jwt">
+            <openid-config url="https://login.microsoftonline.com/arias360.onmicrosoft.com/.well-known/openid-configuration" />
+            <required-claims>
+                <claim name="aud" match="any">
+                    <value>api://f74add11-1f25-4917-bec5-ffe6bd8e5736</value>
+                </claim>
+                <claim name="roles" match="any">
+                    <value>a49e5954-1916-4c6b-bd04-2b060fb9d850</value>
+                </claim>
+            </required-claims>
+        </validate-jwt>
+        <set-header name="jwt-email" exists-action="override">
+            <value>@{
+            var jwt = context.Request.Headers.GetValueOrDefault("Authorization").AsJwt();
+            return jwt?.Claims.GetValueOrDefault("email") ?? "unknown";
+        }</value>
+        </set-header>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

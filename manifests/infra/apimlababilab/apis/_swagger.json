@@ -1,0 +1,838 @@
+{
+  "x-generator": "NSwag v13.6.1.0 (NJsonSchema v10.1.21.0 (Newtonsoft.Json v12.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Cadenas - Microservicio",
+    "description": "Permite la administracion del Cadenas e Industrias <br> Version: 0.3.1.0<br>Build Version:develop.1.20200813.3<br>Kubernetes Enviroment:Development",
+    "version": "0.3.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://abi-api-cadenas-dev.dev.abinbev-las.com"
+    }
+  ],
+  "paths": {
+    "/api/Account/ValidAccounts": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "operationId": "Account_ValidAccounts",
+        "requestBody": {
+          "x-name": "ListAccountsToValidate",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Account/getOne": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "operationId": "Account_GetOne",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDTO"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Account/getAll": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "operationId": "Account_GetAll",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AccountDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Cadena/AddItem": {
+      "post": {
+        "tags": [
+          "Cadena"
+        ],
+        "operationId": "Cadena_CreateData",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCadenaCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Cadena/getOne": {
+      "get": {
+        "tags": [
+          "Cadena"
+        ],
+        "operationId": "Cadena_GetOne",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChainDTO"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Cadena/getAll": {
+      "get": {
+        "tags": [
+          "Cadena"
+        ],
+        "operationId": "Cadena_GetAll",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChainDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Cadena/EditItem": {
+      "post": {
+        "tags": [
+          "Cadena"
+        ],
+        "operationId": "Cadena_UpdateData",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditCadenaCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/RappelDynamic/getOne": {
+      "get": {
+        "tags": [
+          "RappelDynamic"
+        ],
+        "operationId": "RappelDynamic_GetOne",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RappelDynamicDTO"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/RappelDynamic/getAllByChainID": {
+      "get": {
+        "tags": [
+          "RappelDynamic"
+        ],
+        "operationId": "RappelDynamic_GetAllByChainID",
+        "parameters": [
+          {
+            "name": "ChainID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RappelDynamicDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/RappelDynamic/getAllActiveByChainID": {
+      "get": {
+        "tags": [
+          "RappelDynamic"
+        ],
+        "operationId": "RappelDynamic_GetAllActiveByChainID",
+        "parameters": [
+          {
+            "name": "ChainID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RappelDynamicDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProblemDetails": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": {}
+          }
+        }
+      },
+      "AccountDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "price_List_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price_List_Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "industry_Report": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "start_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "canceled_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "canceled_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "chain_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rappelFixedItem": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/RappelFixedDTO"
+              }
+            ]
+          },
+          "rappelDynamicItems": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RappelDynamicDTO"
+            }
+          },
+          "rappelFixedItemHistorical": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RappelFixedDTO"
+            }
+          },
+          "rappelDynamicItemsHistorical": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RappelDynamicDTO"
+            }
+          }
+        }
+      },
+      "RappelFixedDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tipo_Fac_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "discount": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "start_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "canceled_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "canceled_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "account_ID": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "RappelDynamicDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tipo_Fac_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "start_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "canceled_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "canceled_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "account_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "account_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "rappelDynamicBrandItems": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RappelDynamicBrandDTO"
+            }
+          },
+          "rappelDynamicScaleItems": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RappelDynamicScaleDTO"
+            }
+          }
+        }
+      },
+      "RappelDynamicBrandDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "brandName"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brandId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brandName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "canceled_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "canceled_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rappelDynamic_ID": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "RappelDynamicScaleDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "percent": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "billing": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "start_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "canceled_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "canceled_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rappelDynamic_ID": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CreateCadenaCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "industry_Report",
+          "created_by_UserID",
+          "accountItems"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "industry_Report": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accountItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountDTO"
+            }
+          }
+        }
+      },
+      "ChainDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "industry_Report": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "start_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "canceled_Date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "canceled_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accountItems": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/AccountDTO"
+            }
+          }
+        }
+      },
+      "EditCadenaCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "industry_Report",
+          "created_by_UserID",
+          "accountItems"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "industry_Report": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created_by_UserID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accountItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountDTO"
+            }
+          }
+        }
+      }
+    }
+  }
+}

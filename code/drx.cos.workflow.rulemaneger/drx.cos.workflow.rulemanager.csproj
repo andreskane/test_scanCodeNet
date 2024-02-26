@@ -1,0 +1,90 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+    <!-- This property makes the build directory similar to a publish directory and helps the AWS .NET Lambda Mock Test Tool find project dependencies. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <!-- Generate ready to run images during publishing to improvement cold starts. -->
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
+    <Version>1.2023.1220.1201</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="CouchbaseDB\**" />
+    <Compile Remove="Model\Enums\**" />
+    <Content Remove="CouchbaseDB\**" />
+    <Content Remove="Model\Enums\**" />
+    <EmbeddedResource Remove="CouchbaseDB\**" />
+    <EmbeddedResource Remove="Model\Enums\**" />
+    <None Remove="CouchbaseDB\**" />
+    <None Remove="Model\Enums\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="AutoMapperConfig.cs" />
+    <Compile Remove="Controllers\NrulesController.cs" />
+    <Compile Remove="Interfaces\IDocDynamicFormRepository.cs" />
+    <Compile Remove="Interfaces\IDocRulesRepository.cs" />
+    <Compile Remove="Model\DocLayout.cs" />
+    <Compile Remove="Model\DocRules.cs" />
+    <Compile Remove="Services\CouchbaseService.cs" />
+    <Compile Remove="Services\ListaDataService.cs" />
+    <Compile Remove="Services\Rules\IRuleServices.cs" />
+    <Compile Remove="Services\Rules\nRulesHandler.cs" />
+    <Compile Remove="Services\Rules\ValidateRuleRequest.cs" />
+    <Compile Remove="Services\Rules\ValidateRuleResponse.cs" />
+    <Compile Remove="Services\SlugService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+	  <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300" />
+	  <PackageReference Include="AWSSDK.SecretsManager" Version="3.7.301.5" />
+    <PackageReference Include="Amazon.Lambda.AspNetCoreServer.Hosting" Version="1.6.1" />
+    <PackageReference Include="ConnectureOS.Framework.AWS" Version="1.2023.1219.1705" />
+    <PackageReference Include="ConnectureOS.Framework.Caching" Version="2.2023.1219.1705" />
+    <PackageReference Include="ConnectureOS.Framework.Domain" Version="2.2023.1219.1705" />
+    <PackageReference Include="ConnectureOS.Framework.Entity" Version="2.1.10" />
+    <PackageReference Include="ConnectureOS.Framework.Helpers" Version="2.1.10.1" />
+    <PackageReference Include="ConnectureOS.Framework.Infrastructure" Version="2.1.10" />
+    <PackageReference Include="ConnectureOS.Framework.Message" Version="2.2023.1219.1705" />
+    <PackageReference Include="ConnectureOS.Framework.Net" Version="2.1.10" />
+    <PackageReference Include="ConnectureOS.Framework.Repository" Version="2.1.10" />
+
+	 
+	  <PackageReference Include="Couchbase.Extensions.DependencyInjection" Version="3.4.13" />
+	  <PackageReference Include="CouchbaseNetClient" Version="3.4.13" />
+	  <PackageReference Include="Linq2Couchbase" Version="2.0.0" />
+	  
+	  <PackageReference Include="Serilog" Version="3.1.1" />
+	  <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+	  <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+	  <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+	  <PackageReference Include="Slugify.Core" Version="4.0.1" />
+	  <PackageReference Include="ValueOf" Version="2.0.31" />
+	  <PackageReference Include="Kralizek.Extensions.Configuration.AWSSecretsManager" Version="1.7.0" />
+	  <PackageReference Include="MediatR" Version="12.2.0" />
+
+	  <PackageReference Include="Autofac" Version="7.1.0" />
+	  <PackageReference Include="AutoMapper" Version="12.0.1" />
+	  <PackageReference Include="FluentValidation" Version="11.8.1" />
+	  <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.1" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+ 
+
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="RequestModel\" />
+    <Folder Include="ResponseModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\RulesEngine\RulesEngine.csproj" />
+  </ItemGroup>
+</Project>

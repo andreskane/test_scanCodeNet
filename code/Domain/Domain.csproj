@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;Docker;Swagger</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\DynamicFormAggregate\DynamicFormProductAttributes.cs" />
+    <Compile Remove="Entities\DynamicFormAggregate\WorkFlowPlanProduct.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+ 
+    <PackageReference Include="ConnectureOS.Framework.Domain" Version="2.2023.1219.1705" />
+    <PackageReference Include="ConnectureOS.Framework.Entity" Version="2.1.10" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RulesEngine\RulesEngine.csproj" />
+  </ItemGroup>
+
+</Project>

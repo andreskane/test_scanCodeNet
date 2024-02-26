@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: #{img_lowercase_name}#
+  namespace: #{namespace_aks}#
+spec:
+  replicas: #{replicas}#
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%  
+  selector:
+    matchLabels:
+      app: #{img_lowercase_name}#
+  template:
+    metadata:
+      labels:
+        app: #{img_lowercase_name}#
+        releaseId: "#{Release.ReleaseId}#"
+    
+    spec:
+      containers:
+      - name: #{img_lowercase_name}#
+        image: #{a8k}#/#{img_lowercase_name}#:#{BuildVersion}#
+        envFrom:
+            - configMapRef:
+                name: #{img_lowercase_name}#-configmap
+        imagePullPolicy: Always
+        #volumeMounts:
+        #- name: config-volume
+        #  mountPath: /app/assets/config/
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /api/version
+            port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 20
+        metrics:
+          - name: custom-metric
+            path: /metrics
+        env:
+          - name: "ENV"
+            value: "#{KubernetesEnv}#"
+          - name: "KubernetesEnv"
+            value: "#{KubernetesEnv}#"
+
+      #volumes:
+      #  - name: config-volume
+      #    configMap:
+      #      name: #{img_lowercase_name}#-configmap
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: #{img_lowercase_name}#
+  namespace:  #{namespace_aks}#
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: #{img_lowercase_name}#
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70

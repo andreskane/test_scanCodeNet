@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;Docker;Swagger</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Dto\CityDto.cs" />
+    <Compile Remove="Dto\CountryDto.cs" />
+    <Compile Remove="Dto\CustomerDto.cs" />
+    <Compile Remove="Dto\NationalityDto.cs" />
+    <Compile Remove="Dto\ObfuscatedContactDataDto.cs" />
+    <Compile Remove="Dto\PersonByRutDto.cs" />
+    <Compile Remove="Dto\ProvinceDto.cs" />
+    <Compile Remove="Dto\SmallEntityDto.cs" />
+    <Compile Remove="Dto\State.cs" />
+    <Compile Remove="Dto\UserInformationDto.cs" />
+    <Compile Remove="Handlers\CommandHandlers\BulkProcess\ProcessBulkCommand.cs" />
+    <Compile Remove="Handlers\CommandHandlers\DynamicFormProductAttributes\CreateDynamicFormProductAttributesCommandHandler.cs" />
+    <Compile Remove="Handlers\CommandHandlers\DynamicFormProductAttributes\DeleteDynamicFormProductAttributesCommandHandler.cs" />
+    <Compile Remove="Handlers\CommandHandlers\DynamicFormProductAttributes\UpdateDynamicFormProductAttributesCommandHandler.cs" />
+    <Compile Remove="Handlers\QueryHandlers\DynamicFormProductAttributes\GetDFProductAttributesByIdQueryHandler.cs" />
+    <Compile Remove="Helper\AzureConstants.cs" />
+    <Compile Remove="Helper\BlobStorageHelper.cs" />
+    <Compile Remove="RequestModels\CommandRequestModels\MailMessage\MailMessageCreateCommandRequest.cs" />
+    <Compile Remove="RequestModels\QueriesRequestModels\GetFullPersonByClientNumberQuery.cs" />
+    <Compile Remove="RequestModels\QueriesRequestModels\GetFullPersonByRutQuery.cs" />
+    <Compile Remove="RequestModels\QueriesRequestModels\GetObfuscatedContactDataQuery.cs" />
+    <Compile Remove="RequestModels\QueriesRequestModels\GetPersonByRutQuery.cs" />
+    <Compile Remove="ResponseModels\QueriesResponseModels\GetFullPersonResponse.cs" />
+    <Compile Remove="ResponseModels\QueriesResponseModels\GetObfuscatedContactDataResponse.cs" />
+    <Compile Remove="ResponseModels\QueriesResponseModels\GetPersonByRutResponse.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Coravel" Version="5.0.2" />
+ 
+
+	  <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.8.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.1" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.DynamicLinq" Version="7.3.5" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+
+	  <PackageReference Include="ConnectureOS.Framework.Entity" Version="2.1.10" />
+	  <PackageReference Include="ConnectureOS.Framework.Helpers" Version="2.1.10.1" />
+	  <PackageReference Include="ConnectureOS.Framework.Message" Version="2.2023.1219.1705" />
+	  <PackageReference Include="ConnectureOS.Framework.Net" Version="2.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\RulesEngine\RulesEngine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Handlers\CommandHandlers\Components\" />
+    <Folder Include="Handlers\CommandHandlers\DynamicFormProductAttributes\" />
+    <Folder Include="Handlers\EventsHandlers\" />
+    <Folder Include="Handlers\QueryHandlers\DynamicFormProductAttributes\" />
+    <Folder Include="RequestModels\CommandRequestModels\Components\" />
+    <Folder Include="RequestModels\CommandRequestModels\MailMessage\" />
+    <Folder Include="ResponseModels\CommandResponseModels\Components\" />
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
+</Project>
